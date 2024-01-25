@@ -1,2 +1,4 @@
 *.meta
 /[Oo]bj/
+Temp/obj/CloudedMountain.Neovim.Editor
+CloudedMountain.Neovim.Editor.csproj
