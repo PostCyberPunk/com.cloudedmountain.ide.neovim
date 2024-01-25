@@ -149,10 +149,11 @@ public class NeovimCodeEditor : IExternalCodeEditor
       line = 1;
     if (column == -1)
       column = 0;
-
+		if (line > 1)
+				line -= 1;
     var arguments = $"--server /tmp/nvimsocket --remote {filePath}";
-    Debug.Log("arguments");
-    Debug.Log(arguments);
+    /* Debug.Log("arguments"); */
+    /* Debug.Log(arguments); */
 
     // if (Arguments != DefaultArgument)
     // {
@@ -188,6 +189,8 @@ public class NeovimCodeEditor : IExternalCodeEditor
     };
 
     process.Start();
+		process.StartInfo.Arguments=$"--server /tmp/nvimsocket --remote-send \"<C-\\><C-N>:HyprFocusMe<CR>{line}G\"";
+		process.Start();
     return true;
   }
 
